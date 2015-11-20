@@ -44,3 +44,26 @@ tm <- list(NA)
 for(n in 1:9){
   tm[[n]] <- tMatrixSLG
 }
+
+
+#-----------------------------
+#subset events by pitchers
+eventsP <- subset(events, BAT_FLD_CD==1)
+
+#create transition matrix
+tMatrixP <- matrix(0, ncol=25, nrow=25)
+colnames(tMatrixP) <- 0:24
+rownames(tMatrixP) <- 0:24
+
+#get table of events, divide by number of events
+tMatrixP[1:24,] <- table(eventsP[,c("sit","sitNext")])
+tMatrixP[1:24,] <- tMatrixP[1:24,]/rowSums(tMatrixP[1:24,])
+
+#save table as csv
+write.csv(tMatrix,"~/Documents/Columbia/Applied Math Seminar/tMatrixP.csv")
+
+#place transition matrix in all 9 batting slots
+tm <- list(NA)
+for(n in 1:9){
+  tm[[n]] <- tMatrixP
+}

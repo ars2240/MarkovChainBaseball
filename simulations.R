@@ -2,8 +2,8 @@
 tm <- list(NA)
 for(n in 1:9){
   tm[[n]] <- tMatrix
-  if(n==9){
-    tm[[n]] <- tMatrixSLG
+  if(n==8){
+    tm[[n]] <- tMatrixP
   }
 }
 
@@ -18,4 +18,4 @@ print(paste0("Time elapsed: ",floor((proc.time() - ptm)[3]/60)," min ",(proc.tim
 
 #print summary data of runs scored and display a histogram
 print(summary(sims))
-hist(sims, breaks=50, xlim=c(0,30), ylim=c(0,1250), xlab="Runs", main="Runs per Game - Slugger Bats 9th")
+hist(sims, breaks=50, xlim=c(0,30), ylim=c(0,1250), xlab="Runs", main="Runs per Game - Pitcher Bats 8th")
